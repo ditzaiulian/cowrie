@@ -213,7 +213,7 @@ class command_ps(HoneyPotCommand):
         if len(self.args):
             args = self.args[0].strip()
         _user, _pid, _ppid, _c, _cpu, _mem, _vsz, _rss, _tty, _stat, \
-            _start, _time, _command = list(range(12))
+            _start, _time, _command = list(range(13))
         output = (
             ('USER      ', ' PID', 'PPID', '   C',  ' %CPU', ' %MEM', '    VSZ', '   RSS', ' TTY      ', 'STAT ', 'START', '   TIME ', 'COMMAND',),
             ('root      ', '   1', '   0', '   0',  '  0.0', '  0.1', '   2100', '   688', ' ?        ', 'Ss   ', 'Nov06', '   0:07 ', 'init [2]  ',),
