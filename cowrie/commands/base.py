@@ -257,13 +257,13 @@ class command_ps(HoneyPotCommand):
                         and output[i][_tty].strip() != 'pts/0':
                     continue
             l = [_pid, _tty, _time, _command]
-            if 'f' in args:
-                l = [_user, _pid, _ppid, _c, _start, _tty, _time, _command]
             if 'a' in args or 'x' in args:
                 l = [_pid, _tty, _stat, _time, _command]
             if 'u' in args:
                 l = [_user, _pid, _cpu, _mem, _vsz, _rss, _tty, _stat,
                     _start, _time, _command]
+            if 'f' in args:
+                l = [_user, _pid, _ppid, _c, _start, _tty, _time, _command]
             s = ''.join([output[i][x] for x in l])
             if 'w' not in args:
                 s = s[:80]
