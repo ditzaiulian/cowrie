@@ -252,9 +252,9 @@ class command_ps(HoneyPotCommand):
 
         for i in range(len(output)):
             if i != 0:
-                if 'a' not in args or 'e' not in args and output[i][_user].strip() != user:
+                if ('a' not in args or 'e' not in args) and output[i][_user].strip() != user:
                     continue
-                elif 'a' not in args or 'e' not in args and 'x' not in args and output[i][_tty].strip() != 'pts/0':
+                elif ('a' not in args or 'e' not in args) and 'x' not in args and output[i][_tty].strip() != 'pts/0':
                     continue
             l = [_pid, _tty, _time, _command]
             if 'a' in args or 'x' in args:
