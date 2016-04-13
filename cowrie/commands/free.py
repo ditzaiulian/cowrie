@@ -82,4 +82,3 @@ class command_free(HoneyPotCommand):
 
 commands['/usr/bin/free'] = command_free
 
-Swap
