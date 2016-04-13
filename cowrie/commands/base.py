@@ -215,7 +215,7 @@ class command_ps(HoneyPotCommand):
         _user, _pid, _ppid, _c, _cpu, _mem, _vsz, _rss, _tty, _stat, \
             _start, _time, _command = list(range(13))
         output = (
-            ('USER      ', ' PID', 'PPID', '   C',  ' %CPU', ' %MEM', '    VSZ', '   RSS', ' TTY      ', 'STAT ', 'START', '   TIME ', 'COMMAND',),
+            ('USER      ', ' PID', ' PPID', '  C',  ' %CPU', ' %MEM', '    VSZ', '   RSS', ' TTY      ', 'STAT ', 'START', '   TIME ', 'COMMAND',),
             ('root      ', '   1', '   0', '   0',  '  0.0', '  0.1', '   2100', '   688', ' ?        ', 'Ss   ', 'Nov06', '   0:07 ', 'init [2]  ',),
             ('root      ', '   2', '   0', '   0',  '  0.0', '  0.0', '      0', '     0', ' ?        ', 'S<   ', 'Nov06', '   0:00 ', '[kthreadd]',),
             ('root      ', '   3', '   2', '   0',  '  0.0', '  0.0', '      0', '     0', ' ?        ', 'S<   ', 'Nov06', '   0:00 ', '[migration/0]',),
@@ -246,8 +246,8 @@ class command_ps(HoneyPotCommand):
             ('root      ', '2112', '   1', '   0',  '  0.0', '  0.0', '   1764', '   508', ' tty6     ', 'Ss+  ', 'Nov06', '   0:00 ', '/sbin/getty 38400 tty6',),
             ('root      ', '2133', '   1', '   0',  '  0.0', '  0.1', '   2180', '   620', ' ?        ', 'S<s  ', 'Nov06', '   0:00 ', 'dhclient3 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclien',),
             ('root      ', '4969', '   1', '   0',  '  0.0', '  0.1', '   5416', '  1024', ' ?        ', 'Ss   ', 'Nov08', '   0:00 ', '/usr/sbin/sshd: %s@pts/0' % user,),
-            ('%s'.ljust(8) % user, '5673', '2103', '   0', '  0.0', '  0.2', '   2924', '  1540', ' pts/0    ', 'Ss   ', '04:30', '   0:00 ', '-bash',),
-            ('%s'.ljust(8) % user, '5679', '2103', '   0', '  0.0', '  0.1', '   2432', '   928', ' pts/0    ', 'R+   ', time.strftime('%H:%M:%S'), utils.uptime(self.protocol.uptime()), '   0:00 ', 'ps %s' % ' '.join(self.args),)
+            ('%s'.ljust(8) % user, '5673', '2103', '   0', '  0.0', '  0.2', '   2924', '  1540', ' pts/0    ', 'Ss   ', '  'time.strftime('%H:%M'), utils.uptime(self.protocol.logintime()), '   0:00 ', '-bash',),
+            ('%s'.ljust(8) % user, '5679', '2103', '   0', '  0.0', '  0.1', '   2432', '   928', ' pts/0    ', 'R+   ', '  'time.strftime('%H:%M'), utils.uptime(self.protocol.uptime()), '   0:00 ', 'ps %s' % ' '.join(self.args),)
             )
         for i in range(len(output)):
             if i != 0:
