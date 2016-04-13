@@ -244,7 +244,7 @@ class command_ps(HoneyPotCommand):
             ('root      ', '2109', '    1', '   0',  '  0.0', '  0.0', '   1764', '   504', ' tty4     ', 'Ss+  ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', '/sbin/getty 38400 tty4',),
             ('root      ', '2110', '    1', '   0',  '  0.0', '  0.0', '   1764', '   504', ' tty5     ', 'Ss+  ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', '/sbin/getty 38400 tty5',),
             ('root      ', '2112', '    1', '   0',  '  0.0', '  0.0', '   1764', '   508', ' tty6     ', 'Ss+  ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', '/sbin/getty 38400 tty6',),
-            ('root      ', '2133', '    1', '   0',  '  0.0', '  0.1', '   2180', '   620', ' ?        ', 'S<s  ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', 'dhclient3 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclien',),
+            ('root      ', '2133', '    1', '   0',  '  0.0', '  0.1', '   2180', '   620', ' ?        ', 'S<s  ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', 'dhclient3 -pf /var/run/dhclient.eth0.pid -lf /var/lib/dhcp3/dhclient',),
             ('root      ', '4969', '    1', '   0',  '  0.0', '  0.1', '   5416', '  1024', ' ?        ', 'Ss   ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%b:%d'), '   0:00 ', '/usr/sbin/sshd: %s@pts/0' % user,),
             ('%s'.ljust(8) % user, '5673', ' 2103', '   0', '  0.0', '  0.2', '   2924', '  1540', ' pts/0    ', 'Ss   ', '  '+ time.strftime('%H:%M' , time.localtime(self.protocol.logintime)), '   0:00 ', '-bash',),
             ('%s'.ljust(8) % user, '5679', ' 2103', '   0', '  0.0', '  0.1', '   2432', '   928', ' pts/0    ', 'R+   ', '  '+ time.strftime('%H:%M'), '   0:00 ', 'ps %s' % ' '.join(self.args),)
@@ -252,9 +252,9 @@ class command_ps(HoneyPotCommand):
 
         for i in range(len(output)):
             if i != 0:
-                if ('a' not in args or 'e' not in args) and output[i][_user].strip() != user:
+                if 'a' not in args and output[i][_user].strip() != user:
                     continue
-                elif ('a' not in args or 'e' not in args) and 'x' not in args and output[i][_tty].strip() != 'pts/0':
+                elif 'a' not in args and 'x' not in args and output[i][_tty].strip() != 'pts/0':
                     continue
             l = [_pid, _tty, _time, _command]
             if 'a' in args or 'x' in args:
