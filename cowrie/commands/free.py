@@ -62,22 +62,19 @@ class command_free(HoneyPotCommand):
         var_swp = randint(0, MEM_RANGE)
 
         if fmt=='bytes':
-            FREE_BYTES=
-            """             total       used       free     shared    buffers     cached
+            FREE_BYTES="""             total       used       free     shared    buffers     cached
             Mem:       """+str(MEM_TOTAL)+'    '+str(MEM_USED + var_mem)+'     '+str(MEM_TOTAL - MEM_USED - var_mem)+'          0     '+str(MEM_BUFF + var_mem_buf)+'    '+str(MEM_CACHE + var_mem_cache)+"""
             -/+ buffers/cache:    """+str(BUFF + var_buf)+'    '+str(CACHE + var_cache)+"""
             Swap:      """+str(SWP_TOTAL)+'     '+str(SWP_USED + var_swp)+'    '+str(SWP_TOTAL - SWP_USED - var_swp)
             self.write(FREE_BYTES+'\n')
         elif fmt=='megabytes':
-            FREE_MEGA=
-            """             total       used       free     shared    buffers     cached
+            FREE_MEGA="""             total       used       free     shared    buffers     cached
             Mem:       """+str(int(round(MEM_TOTAL / 1024)))+'    '+str(int(round((MEM_USED + var_mem)/1024)))+'     '+str(int(round((MEM_TOTAL - MEM_USED - var_mem)/1024)))+'          0     '+str(int(round((MEM_BUFF + var_mem_buf)/1024)))+'    '+str(int(round((MEM_CACHE + var_mem_cache)/1024)))+"""
             -/+ buffers/cache:    """+str(int(round((BUFF + var_buf)/1024)))+'    '+str(int(round((CACHE + var_cache)/1024)))+"""
-            Swap:      """+str(int(round(SWP_TOTAL / 1024)))+'     '+str(int(round((SWP_USED + var_swp)/1024)))+'    '+str(int(round((SWP_TOTAL - SWP_USED - var_swp)/1024)))       
+            Swap:      """+str(int(round(SWP_TOTAL / 1024)))+'     '+str(int(round((SWP_USED + var_swp)/1024)))+'    '+str(int(round((SWP_TOTAL - SWP_USED - var_swp)/1024)))
             self.write(FREE_MEGA+'\n')
         elif fmt=='human':
-            FREE_HUMAN=
-            """             total       used       free     shared    buffers     cached
+            FREE_HUMAN="""             total       used       free     shared    buffers     cached
             Mem:       """+str(int(round(MEM_TOTAL / 1048576)))+'    '+str(int(round((MEM_USED + var_mem)/1048576)))+'     '+str(int(round((MEM_TOTAL - MEM_USED - var_mem)/1048576)))+'          0     '+str(int(round((MEM_BUFF + var_mem_buf)/1048576)))+'    '+str(int(round((MEM_CACHE + var_mem_cache)/1048576)))+"""
             -/+ buffers/cache:    """+str(int(round((BUFF + var_buf)/1048576)))+'    '+str(int(round((CACHE + var_cache)/1048576)))+"""
             Swap:      """+str(int(round(SWP_TOTAL / 1048576)))+'     '+str(int(round((SWP_USED + var_swp)/1048576)))+'    '+str(int(round((SWP_TOTAL - SWP_USED - var_swp)/1048576)))
