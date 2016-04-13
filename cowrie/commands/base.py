@@ -216,7 +216,7 @@ class command_ps(HoneyPotCommand):
             _start, _time, _command = list(range(13))
         output = (
             ('USER      ', ' PID', ' PPID', '  C',  ' %CPU', ' %MEM', '    VSZ', '   RSS', ' TTY      ', 'STAT ', 'START', '   TIME ', 'COMMAND',),
-            ('root      ', '   1', '   0', '   0',  '  0.0', '  0.1', '   2100', '   688', ' ?        ', 'Ss   ', '  '+ datetime.datetime.fromtimestamp(utils.uptime(self.protocol.uptime())).strftime('%H:%M'), '   0:07 ', 'init [2]  ',),
+            ('root      ', '   1', '   0', '   0',  '  0.0', '  0.1', '   2100', '   688', ' ?        ', 'Ss   ', '  '+ datetime.datetime.fromtimestamp(self.protocol.uptime()).strftime('%H:%M'), '   0:07 ', 'init [2]  ',),
             ('root      ', '   2', '   0', '   0',  '  0.0', '  0.0', '      0', '     0', ' ?        ', 'S<   ', '  '+ time.strftime('%H:%M' , utils.uptime(self.protocol.uptime())), '   0:00 ', '[kthreadd]',),
             ('root      ', '   3', '   2', '   0',  '  0.0', '  0.0', '      0', '     0', ' ?        ', 'S<   ', '  '+ time.strftime('%H:%M' , utils.uptime(self.protocol.uptime())), '   0:00 ', '[migration/0]',),
             ('root      ', '   4', '   2', '   0',  '  0.0', '  0.0', '      0', '     0', ' ?        ', 'S<   ', '  '+ time.strftime('%H:%M' , utils.uptime(self.protocol.uptime())), '   0:00 ', '[ksoftirqd/0]',),
